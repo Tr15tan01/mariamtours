@@ -1,26 +1,369 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Performance-friendly utilities */
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #2563eb, #059669);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .hover-lift {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* Simplified pattern backgrounds */
+  .pattern-dots {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.1;
+  }
+
+  .pattern-grid {
+    background-image:
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--border)),
+      transparent
+    );
+  }
+}
+
+@layer utilities {
+  /* === Lightweight Background Animations === */
+
+  /* 1. Subtle Gradient Shift (very lightweight) */
+  .bg-gradient-shift {
+    background: linear-gradient(
+      -45deg,
+      rgba(59, 130, 246, 0.05) 0%,
+      rgba(16, 185, 129, 0.05) 25%,
+      rgba(59, 130, 246, 0.05) 50%,
+      rgba(16, 185, 129, 0.05) 75%,
+      rgba(59, 130, 246, 0.05) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* 2. Very Slow Pulse (minimal CPU usage) */
+  .bg-pulse-subtle {
+    background: linear-gradient(
+      to right,
+      rgba(239, 246, 255, 1) 0%,
+      rgba(240, 253, 250, 1) 100%
+    );
+    animation: pulse-subtle 20s ease-in-out infinite;
+  }
+
+  /* 3. Static Geometric Pattern (no animation, just visual interest) */
+  .bg-geometric-static {
+    background-color: #f8fafc;
+    background-image:
+      radial-gradient(
+        circle at 10% 20%,
+        rgba(59, 130, 246, 0.05) 0%,
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(16, 185, 129, 0.05) 0%,
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(59, 130, 246, 0.03) 0%,
+        transparent 20%
+      );
+  }
+
+  /* 4. Slow Drift Clouds (very gentle) */
+  .bg-cloud-drift {
+    background:
+      radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.8) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(255, 255, 255, 0.6) 0%,
+        transparent 50%
+      ),
+      linear-gradient(120deg, #e0f2fe 0%, #f0fdf4 100%);
+    background-size: 200% 200%;
+    animation: cloud-drift 60s linear infinite;
+  }
+
+  /* 5. Minimal Grid (very subtle animation) */
+  .bg-minimal-grid {
+    background-size: 50px 50px;
+    background-image:
+      linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+    animation: grid-move 100s linear infinite;
+  }
+
+  /* 6. Gradient Overlay (static with animated overlay) */
+  .bg-gradient-overlay {
+    position: relative;
+    background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+  }
+
+  .bg-gradient-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    animation: shimmer-overlay 20s linear infinite;
+    pointer-events: none;
+  }
+
+  /* 7. Floating Dots (optimized for performance) */
+  .bg-floating-dots {
+    background-image:
+      radial-gradient(
+        circle at 10% 20%,
+        rgba(59, 130, 246, 0.1) 2px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 30% 40%,
+        rgba(16, 185, 129, 0.1) 2px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 70% 60%,
+        rgba(59, 130, 246, 0.1) 2px,
+        transparent 2px
+      ),
+      radial-gradient(
+        circle at 90% 80%,
+        rgba(16, 185, 129, 0.1) 2px,
+        transparent 2px
+      );
+    background-size: 300px 300px;
+    animation: dots-float 120s linear infinite;
+  }
+
+  /* === Performance-Optimized Keyframes === */
+
+  /* Slow gradient shift - optimized */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Very slow pulse - minimal CPU */
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Extremely slow cloud drift */
+  @keyframes cloud-drift {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  /* Slow grid movement */
+  @keyframes grid-move {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+
+  /* Subtle shimmer effect */
+  @keyframes shimmer-overlay {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Very slow dots movement */
+  @keyframes dots-float {
+    0% {
+      background-position:
+        0 0,
+        0 0,
+        0 0,
+        0 0;
+    }
+    100% {
+      background-position:
+        300px 300px,
+        150px 150px,
+        -150px -150px,
+        -300px -300px;
+    }
+  }
+
+  /* === Performance Tips Utility Classes === */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Hardware acceleration for smooth animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+  }
 }
