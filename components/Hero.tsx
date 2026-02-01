@@ -8,6 +8,8 @@ import {
   Waves,
 } from "lucide-react";
 
+import Link from "next/link";
+
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 mt-4">
@@ -48,20 +50,25 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button
-              size="lg"
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white text-lg px-8 py-6 shadow-lg hover-lift"
-            >
-              <span className="relative z-10">Start Your Adventure</span>
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6 hover-lift border-2 border-blue-200 hover:border-blue-300"
-            >
-              Explore Tours
-            </Button>
+            <Link href="/tours">
+              <Button
+                size="lg"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white text-lg px-8 py-6 shadow-lg hover-lift cursor-pointer"
+              >
+                <span className="relative z-10">Start Your Adventure</span>
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
+
+            <Link href="/tours">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 py-6 hover-lift border-2 border-blue-200 hover:border-blue-300 cursor-pointer"
+              >
+                Explore Tours
+              </Button>
+            </Link>
           </div>
 
           {/* Stats - redesigned */}
