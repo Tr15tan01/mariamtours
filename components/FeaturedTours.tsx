@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -94,10 +95,21 @@ export function FeaturedTours() {
               className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300 hover-lift animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div
-                className={`relative h-48 bg-gradient-to-br ${tour.color} overflow-hidden`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+              <div className="relative h-48 overflow-hidden">
+                {/* Next.js Image component */}
+                <Image
+                  src={tour.image}
+                  alt={tour.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  priority={index < 2} // Load first 2 images with priority
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+
+                {/* Tags */}
                 <div className="absolute top-4 left-4 flex gap-2">
                   {tour.tags.map((tag) => (
                     <Badge
@@ -108,6 +120,8 @@ export function FeaturedTours() {
                     </Badge>
                   ))}
                 </div>
+
+                {/* Rating */}
                 <div className="absolute bottom-4 left-4 flex items-center gap-1 text-white">
                   <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-semibold">{tour.rating}</span>

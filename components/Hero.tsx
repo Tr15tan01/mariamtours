@@ -10,9 +10,9 @@ import {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 mt-4">
       {/* Simple gradient background - no heavy animation */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-emerald-50" />
+      <div className="absolute inset-0 bg-gradient-to- from-blue-50 via-white to-emerald-50" />
 
       {/* Subtle pattern overlay */}
       <div className="absolute inset-0 pattern-dots text-blue-400" />
@@ -50,7 +50,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button
               size="lg"
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-lg px-8 py-6 shadow-lg hover-lift"
+              className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white text-lg px-8 py-6 shadow-lg hover-lift"
             >
               <span className="relative z-10">Start Your Adventure</span>
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -62,7 +62,6 @@ export function Hero() {
             >
               Explore Tours
             </Button>
-            <p>This is env {process.env.TEST_ONE}</p>
           </div>
 
           {/* Stats - redesigned */}

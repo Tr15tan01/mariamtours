@@ -1,42 +1,8 @@
-// import type { Metadata } from "next";
-// import { Inter, Playfair_Display } from "next/font/google";
-// import "./";
-// import { Navigation } from "@/components/Navigarion";
-// import { Footer } from "@/components/Footer";
-
-// const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-// const playfair = Playfair_Display({
-//   subsets: ["latin"],
-//   variable: "--font-serif",
-// });
-
-// export const metadata: Metadata = {
-//   title: "Mari Tours | Discover Georgia",
-//   description:
-//     "Experience the magic of Georgia with our curated tours. Discover ancient culture, breathtaking landscapes, and warm hospitality.",
-// };
-
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-//       <body className="font-sans">
-//         <Navigation />
-//         {children}
-//         <Footer />
-//       </body>
-//     </html>
-//   );
-// }
-
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigarion";
-import { Footer } from "@/components/Footer";
+// import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,7 +39,7 @@ export default function RootLayout({
       <body className="font-sans antialiased georgian-pattern-bg">
         <Navigation />
         {children}
-        <Footer />
+        {/* <Footer /> */}
 
         {/* Scroll Animation Script */}
         <script
