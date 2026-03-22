@@ -22,10 +22,6 @@ export default function Home() {
           <WhyChooseUs />
         </section>
 
-        <section id="contact">
-          <Footer />
-        </section>
-
         <section id="booking">
           {/* Add your booking component here */}
           <div className="container mx-auto px-4 py-16 text-center">
@@ -37,6 +33,9 @@ export default function Home() {
               Book Now
             </Button>
           </div>
+        </section>
+        <section id="contact">
+          <Footer />
         </section>
       </main>
     </div>
