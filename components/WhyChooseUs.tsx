@@ -1,34 +1,56 @@
-import { Shield, Heart, Globe, Clock, CheckCircle } from "lucide-react";
+import {
+  Shield,
+  Heart,
+  Globe,
+  Clock,
+  CheckCircle,
+  Compass,
+  Award,
+  Leaf,
+  Handshake,
+  Calendar,
+  User,
+  MapPin,
+  Sparkles,
+  Mountain,
+  Wine,
+  Camera,
+  Coffee,
+} from "lucide-react";
 import { AnimatedBorder } from "./AnimatedBorder";
 
 const features = [
   {
-    icon: <Heart className="h-8 w-8" />,
+    icon: <Compass className="h-8 w-8" />,
     title: "Local Expertise",
     description:
       "Born and raised in Georgia, we know the hidden gems and authentic experiences.",
     highlights: ["Native guides", "Off-the-beaten-path", "Cultural insights"],
+    highlightIcons: ["🗺️", "🏔️", "🎭"],
   },
   {
-    icon: <Shield className="h-8 w-8" />,
+    icon: <Award className="h-8 w-8" />,
     title: "Trust & Safety",
     description:
       "Fully licensed and insured with 24/7 support throughout your journey.",
     highlights: ["Licensed operator", "24/7 support", "Travel insurance"],
+    highlightIcons: ["✅", "📞", "🛡️"],
   },
   {
-    icon: <Globe className="h-8 w-8" />,
+    icon: <Leaf className="h-8 w-8" />,
     title: "Sustainable Travel",
     description:
       "We support local communities and practice eco-friendly tourism.",
     highlights: ["Eco-friendly", "Local partnerships", "Carbon offset"],
+    highlightIcons: ["🌱", "🤝", "🌍"],
   },
   {
-    icon: <Clock className="h-8 w-8" />,
+    icon: <Sparkles className="h-8 w-8" />,
     title: "Flexible Planning",
     description:
       "Customizable itineraries that match your pace and preferences.",
     highlights: ["Tailored tours", "Flexible dates", "Personalized service"],
+    highlightIcons: ["✏️", "📅", "🎯"],
   },
 ];
 
@@ -62,8 +84,16 @@ export function WhyChooseUs() {
               <AnimatedBorder>
                 <div className="flex flex-col md:flex-row gap-6 p-6">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-emerald-100 flex items-center justify-center">
-                      <div className="text-gradient">{feature.icon}</div>
+                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-emerald-500 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                      {/* Decorative elements */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
+                      <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-blue-400" />
+
+                      {/* Icon */}
+                      <div className="text-white relative z-10">
+                        {feature.icon}
+                      </div>
                     </div>
                   </div>
 
@@ -74,13 +104,17 @@ export function WhyChooseUs() {
                     </p>
 
                     <ul className="space-y-2">
-                      {feature.highlights.map((highlight) => (
+                      {feature.highlights.map((highlight, i) => (
                         <li
                           key={highlight}
-                          className="flex items-center text-sm"
+                          className="flex items-center text-sm group"
                         >
-                          <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                          <span className="text-foreground/80">
+                          <div className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-50 to-emerald-50 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                            <span className="text-sm">
+                              {feature.highlightIcons[i]}
+                            </span>
+                          </div>
+                          <span className="text-foreground/80 font-medium">
                             {highlight}
                           </span>
                         </li>
