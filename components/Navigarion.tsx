@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Plane, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { formUrl } from "@/lib/utils";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +44,12 @@ export function Navigation() {
       // Navigate to home page with hash
       router.push(`/#${item.section}`);
     }
+  };
+
+  // Handle external link (Google Forms)
+  const handleBookNow = () => {
+    window.open(formUrl, "_blank"); // Opens in new tab
+    setIsMenuOpen(false); // Close mobile menu if open
   };
 
   // Handle hash navigation when page loads
@@ -93,15 +100,9 @@ export function Navigation() {
 
           <div className="flex items-center gap-3">
             <Button
-              className="bg-linear-to-r from-blue-600 to-emerald-600 text-white cursor-pointer hover:from-blue-700 hover:to-emerald-700 hidden sm:flex"
+              className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white cursor-pointer hover:from-blue-700 hover:to-emerald-700 hidden sm:flex"
               size="sm"
-              onClick={() =>
-                handleNavigation({
-                  label: "Book Now",
-                  href: "/",
-                  section: "booking",
-                })
-              }
+              onClick={handleBookNow} // Use the new handler
             >
               Book Now
             </Button>
@@ -135,14 +136,8 @@ export function Navigation() {
                 </button>
               ))}
               <Button
-                className="bg-linear-to-r from-blue-600 to-emerald-600 text-white hover:from-blue-700 hover:to-emerald-700 mt-2"
-                onClick={() =>
-                  handleNavigation({
-                    label: "Book Now",
-                    href: "/",
-                    section: "booking",
-                  })
-                }
+                className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white hover:from-blue-700 hover:to-emerald-700 mt-2"
+                onClick={handleBookNow} // Use the new handler
               >
                 Book Now
               </Button>
