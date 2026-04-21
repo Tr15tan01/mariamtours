@@ -191,7 +191,7 @@ export function Footer() {
                     href="mailto:info@maritours.ge"
                     className="text-lg font-bold text-gradient hover:opacity-80 transition-opacity"
                   >
-                    info@maritours.ge
+                    guidedgeorgia@gmail.com
                   </a>
                   <div className="text-xs text-gray-500 mt-1">
                     Response within 24h
