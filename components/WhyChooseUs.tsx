@@ -66,7 +66,7 @@ export function WhyChooseUs() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-            The <span className="text-gradient">Mari Tours</span> Difference
+            The <span className="text-gradient">GeorgiaGuided</span> Difference
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Experience Georgia authentically with our commitment to excellence

@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Mari Tours | Discover the Magic of Georgia",
+  title: "GeorgiaGuided | Discover the Magic of Georgia",
   description:
     "Experience breathtaking landscapes, ancient history, and warm Georgian hospitality with Mari Tours. Your journey through the Caucasus begins here.",
   keywords: [

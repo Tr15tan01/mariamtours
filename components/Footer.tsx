@@ -104,7 +104,7 @@ export function Footer() {
               </div>
               <div>
                 <h2 className="text-3xl font-bold font-serif">
-                  <span className="text-gradient">Mari Tours</span>
+                  <span className="text-gradient">GeorgiaGuided</span>
                 </h2>
                 <p className="text-sm text-blue-600 font-medium">
                   Since 2013 • 1000+ Happy Travelers

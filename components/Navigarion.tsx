@@ -76,7 +76,7 @@ export function Navigation() {
             </div>
             <div>
               <div className="text-2xl font-bold text-gradient font-serif">
-                AnaMari Tours
+                GeorgiaGuided
               </div>
               <div className="text-xs text-muted-foreground">
                 Authentic Georgia Travel

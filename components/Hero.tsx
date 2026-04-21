@@ -56,7 +56,7 @@ export function Hero() {
               Discover
             </span>
             <span className="text-white/90 text-4xl md:text-5xl lg:text-6xl block drop-shadow-lg">
-              Georgia with <span className="text-white">AnaMari</span>
+              Georgia with <span className="text-white">GeorgiaGuided</span>
             </span>
           </h1>
 
